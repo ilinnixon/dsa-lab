@@ -1,0 +1,53 @@
+#include <stdio.h>
+
+int main() {
+  int arr[100], size, i, s, f;
+
+  // Get the size of the array from the user
+  printf("Enter the size of the array: ");
+  scanf("%d", &size);
+
+  // Initialize the array with zeros
+  for (i = 0; i < size; i++) {
+    arr[i] = 0;
+  }
+
+  // Input elements of the array from the user
+  printf("Enter the elements of the array: ");
+  for (i = 0; i < size; i++) {
+    scanf("%d", &arr[i]);
+  }
+
+  // Get the element to search from the user
+  printf("Enter the element to search: ");
+  scanf("%d", &s);
+
+  // Assume that the element is not found in the array
+  f = 0;
+
+  // Search for the element in the array
+  for (i = 0; i < size; i++) {
+    if (arr[i] == s) {
+      f = 1;
+      break;
+    }
+  }
+
+  // If the element is found, print its position
+  if (f == 1) {
+    printf("%d is found at position %d", s, i + 1);
+  } else {
+    printf("%d is not found in the array", s);
+  }
+return.0;
+}
+
+
+
+
+
+
+
+
+
+
