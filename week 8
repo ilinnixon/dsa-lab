@@ -1,0 +1,71 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+  int data;
+  struct Node *next;
+};
+
+void enqueue(struct Node **head, int data) {
+  struct Node *new_node = (struct Node *)malloc(sizeof(struct Node));
+  new_node->data = data;
+  new_node->next = NULL;
+
+  if (*head == NULL) {
+    *head = new_node;
+  } else {
+    struct Node *temp = *head;
+    while (temp->next != NULL) {
+      temp = temp->next;
+    }
+
+    temp->next = new_node;
+  }
+}
+
+void dequeue(struct Node **head) {
+  if (*head == NULL) {
+    return;
+  }
+
+  struct Node *temp = *head;
+  *head = temp->next;
+  free(temp);
+}
+
+int main() {
+  struct Node *head = NULL;
+
+  int choice;
+  while (1) {
+    printf("1. Enqueue\n2. Dequeue\n3. Display\n4. Exit\nEnter your choice: ");
+    scanf("%d", &choice);
+
+    switch (choice) {
+      case 1:
+        int data;
+        printf("Enter the element to enqueue: ");
+        scanf("%d", &data);
+        enqueue(&head, data);
+        break;
+      case 2:
+        dequeue(&head);
+        break;
+      case 3:
+        struct Node *temp = head;
+        while (temp != NULL) {
+          printf("%d ", temp->data);
+          temp = temp->next;
+        }
+        printf("\n");
+        break;
+      case 4:
+        exit(0);
+      default:
+        printf("Invalid choice!\n");
+    }
+  }
+
+  return 0;
+}
+
