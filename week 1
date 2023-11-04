@@ -1,0 +1,41 @@
+#include <stdio.h>
+
+struct student {
+  char name[50];
+  int roll_number;
+  int age;
+  float total_marks;
+};
+
+int main() {
+  // Create a structure pointer to store the address of the structure variable
+  struct student *student_details;
+
+  // Allocate memory for the structure variable
+  student_details = (struct student *)malloc(sizeof(struct student));
+
+  // Prompt the user to enter student details
+  printf("Enter student name: ");
+  scanf("%s", student_details->name);
+
+  printf("Enter student roll number: ");
+  scanf("%d", &student_details->roll_number);
+
+  printf("Enter student age: ");
+  scanf("%d", &student_details->age);
+
+  printf("Enter student total marks: ");
+  scanf("%f", &student_details->total_marks);
+
+  // Display the student details
+  printf("\nStudent details:\n");
+  printf("Name: %s\n", student_details->name);
+  printf("Roll number: %d\n", student_details->roll_number);
+  printf("Age: %d\n", student_details->age);
+  printf("Total marks: %f\n", student_details->total_marks);
+
+  // Free the memory allocated for the structure variable
+  free(student_details);
+
+  return 0;
+}
